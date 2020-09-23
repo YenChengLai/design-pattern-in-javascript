@@ -3,7 +3,7 @@ function Singleton(name) {
 }
 
 Singleton.prototype.getName = function () {
-    return this.name
+    return this.name;
 }
 
 Singleton.getInstance = function (name) {
@@ -12,3 +12,8 @@ Singleton.getInstance = function (name) {
     }
     return this.instance;
 }
+
+var a = Singleton.getInstance('John');
+var b = Singleton.getInstance('Jack');
+
+console.log(a === b);
