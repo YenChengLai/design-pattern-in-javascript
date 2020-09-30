@@ -1,4 +1,8 @@
 function Singleton(name) {
+    if (!(this instanceof Singleton)) {
+        throw new Error('Please use new operator to initiate an object!');
+    }
+
     this.name = name;
 }
 
@@ -15,5 +19,6 @@ Singleton.getInstance = function (name) {
 
 var a = Singleton.getInstance('John');
 var b = Singleton.getInstance('Jack');
+var c = Singleton();
 
 console.log(a === b);
