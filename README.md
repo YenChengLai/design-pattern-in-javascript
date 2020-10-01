@@ -5,3 +5,4 @@ This project is for OOP design patterns in JavaScript practice.
 
 Indexes:
 01. Singleton
+02. Strategy
