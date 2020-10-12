@@ -1,12 +1,17 @@
 Function.prototype.before = function (beforeFn) {
     let _self = this;
     return function () {
-        beforeFn.apply(this, arguments);
-        return _self.apply(this, arguments);
+        beforeFn.apply(null, arguments);
+        return _self.apply(null, arguments);
     };
 }
 
-let func = function() {
+function func() {
     console.log('content');
 }
 
+func = func.before(function() {
+    console.log('before');
+});
+
+func();
