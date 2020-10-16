@@ -16,7 +16,7 @@
 // After Currying
 // put arguments into function cache but not calculate on the fly
 // calculate the total in the cache if no arguments passed
-function addCostCurried() {
+const addCostCurried = (function () {
     const costArr = [];
     return function () {
         if (arguments.length == 0) {
@@ -24,12 +24,10 @@ function addCostCurried() {
         }
         costArr.push(parseInt(arguments[0]));
     }
-}
+})();
 
-const count = addCostCurried();
+addCostCurried(5);
+addCostCurried(10);
+addCostCurried(15);
 
-count(5);
-count(10);
-count(15);
-
-console.log(count());
+console.log(addCostCurried());
