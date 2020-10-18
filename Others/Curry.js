@@ -33,6 +33,10 @@
 // console.log(addCostCurried());
 
 // Add Currying Function
+// Using Higher Order Function:
+// if any argument is passed in the passed function
+// add it into the args array stored in closure and return the passed function
+// if no arguments passed, pass the args array into the passed function
 const currying = function (fn) {
     var args = [];
 
@@ -40,17 +44,18 @@ const currying = function (fn) {
         if (arguments.length == 0) {
             return fn.apply(this, args);
         }
-        args.push(arguments);
+        args.push(arguments[0]);
         return arguments.callee;
     }
 }
 
-const cost = (function () {
-    let total = 0;
-    return function () {
-        return arguments.reduce((acc, curr) => acc + curr, total);
+const cost = function () {
+    let total = 0
+    for (let i = 0; i < arguments.length; i++) {
+        total += arguments[i];
     }
-})();
+    return total;
+};
 
 let addCost = currying(cost);
 addCost(100);
