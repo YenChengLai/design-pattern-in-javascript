@@ -16,18 +16,44 @@
 // After Currying
 // put arguments into function cache but not calculate on the fly
 // calculate the total in the cache if no arguments passed
-const addCostCurried = (function () {
-    const costArr = [];
+// const addCostCurried = (function () {
+//     const costArr = [];
+//     return function () {
+//         if (arguments.length == 0) {
+//             return costArr.reduce((acc, curr) => acc + curr, 0);
+//         }
+//         costArr.push(parseInt(arguments[0]));
+//     }
+// })();
+
+// addCostCurried(5);
+// addCostCurried(10);
+// addCostCurried(15);
+
+// console.log(addCostCurried());
+
+// Add Currying Function
+const currying = function (fn) {
+    var args = [];
+
     return function () {
         if (arguments.length == 0) {
-            return costArr.reduce((acc, curr) => acc + curr, 0);
+            return fn.apply(this, args);
         }
-        costArr.push(parseInt(arguments[0]));
+        args.push(arguments);
+        return arguments.callee;
+    }
+}
+
+const cost = (function () {
+    let total = 0;
+    return function () {
+        return arguments.reduce((acc, curr) => acc + curr, total);
     }
 })();
 
-addCostCurried(5);
-addCostCurried(10);
-addCostCurried(15);
-
-console.log(addCostCurried());
+let addCost = currying(cost);
+addCost(100);
+addCost(200);
+addCost(300);
+console.log(addCost());
