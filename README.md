@@ -7,3 +7,5 @@ Indexes:
 01. Singleton
 02. Strategy
 Others
+01. AOP
+02. Curry
