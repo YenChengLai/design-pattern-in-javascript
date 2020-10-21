@@ -6,6 +6,7 @@ function TimeChuck(array, fn, count) {
             obj = array.shift();
             fn(obj);
         }
+        console.log('-------------------------');
     }
 
     return function () {
@@ -14,6 +15,9 @@ function TimeChuck(array, fn, count) {
                 return clearInterval(timer);
             }
             start();
-        }, 200);
+        }, 2000);
     }
 }
+
+let printNumberEach2Sec = TimeChuck([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], console.log, 2);
+printNumberEach2Sec();
