@@ -19,6 +19,28 @@ Singleton.getInstance = function (name) {
 
 var a = Singleton.getInstance('John');
 var b = Singleton.getInstance('Jack');
-var c = Singleton();
 
 console.log(a === b);
+
+/**
+ * store the output of the passed function, and make sure the output is Singleton
+ * @param {Function} fn 
+ */
+function getSingle(fn) {
+    let result;
+    return function () {
+        return result || (result = fn.apply(this, arguments));
+    }
+}
+
+// getSingle use case
+function Person() {}
+
+function getPerson() {
+    return new Person();
+}
+
+let getSinglePerson = getSingle(getPerson);
+let personOne = getSinglePerson();
+let personTwo = getSinglePerson();
+console.log(personOne == personTwo);
