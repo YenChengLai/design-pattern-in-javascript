@@ -6,6 +6,7 @@ This project is for OOP design patterns in JavaScript practice.
 Indexes:
 01. Singleton
 02. Strategy
+03. Proxy
 Higher Order Function Implementations
 01. AOP
 02. Curry
