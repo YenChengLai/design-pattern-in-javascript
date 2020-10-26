@@ -7,8 +7,12 @@ Indexes:
 01. Singleton
 02. Strategy
 03. Proxy
+04. Iterator
+
 Higher Order Function Implementations
+01. Curry
+02. TimeChuck
+03. UnCurry
+
+Prototype Implementations
 01. AOP
-02. Curry
-03. TimeChuck
-04. UnCurry
