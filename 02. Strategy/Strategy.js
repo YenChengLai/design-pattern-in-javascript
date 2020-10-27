@@ -75,5 +75,4 @@ function getBonus(performanceLevel, salary) {
     return strategies[performanceLevel](salary);
 }
 
-
 console.log(getBonus('5', 48000));

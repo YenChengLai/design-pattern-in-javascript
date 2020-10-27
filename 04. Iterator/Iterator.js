@@ -9,7 +9,10 @@ each([1, 2, 3], function (obj) {
     console.log(obj);
 });
 
-// Outer Iterator
+/**
+ * Outer Iterator
+ * @param {Array-like Object} object 
+ */
 function Iterator(object) {
     let current = 0;
 
