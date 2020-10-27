@@ -8,6 +8,7 @@ Indexes:
 02. Strategy
 03. Proxy
 04. Iterator
+05. Publish-Suscribe
 
 Higher Order Function Implementations
 01. Curry
