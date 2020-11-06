@@ -37,4 +37,3 @@ let proxyMultiply = proxyCacheFactory(multiply),
 // Same operation will be handled by cache
 console.log(proxyMultiply(3, 5));
 console.log(proxyPlus(3, 5));
-
