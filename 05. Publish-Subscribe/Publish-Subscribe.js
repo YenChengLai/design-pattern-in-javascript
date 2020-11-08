@@ -15,15 +15,17 @@ observer.listen = function (key, fn) {
 
 // trigger all listened function with arguments passed in
 observer.trigger = function () {
-    let key = Array.prototype.shift(arguments),
+    // get first parameter as key, and use key to get registered function Array
+    let key = Array.prototype.shift.call(arguments),
         fns = this.listenArray[key];
 
+    // return false if no function registered
     if (!fns || fns.length == 0) {
         return false;
     }
 
     for (let i = 0; i < fns.length; i++) {
-        fns.apply(null, arguments);
+        fns[i].apply(null, arguments);
     }
 }
 
@@ -31,7 +33,9 @@ observer.trigger = function () {
 let sayHi = name => console.log(`Hi, ${name}!`);
 let sayHello = name => console.log(`Hello, ${name}!`);
 
-observer.listen(sayHi);
-observer.listen(sayHello);
+observer.listen('John', sayHi);
+observer.listen('John', sayHello);
+observer.listen('Peter', sayHello);
 
-observer.trigger('John');
+// first parameter is key, second is name for sayHi and sayHello function
+observer.trigger('John', 'John');
