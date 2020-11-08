@@ -5,14 +5,25 @@ const observer = {};
 observer.listenArray = [];
 
 // listener
-observer.listen = function (fn) {
-    this.listenArray.push(fn);
+observer.listen = function (key, fn) {
+    if (!this.listenArray[key]) {
+        this.listenArray[key] = [];
+    }
+
+    this.listenArray[key].push(fn);
 }
 
 // trigger all listened function with arguments passed in
 observer.trigger = function () {
-    for (let i = 0; i < this.listenArray.length; i++) {
-        this.listenArray[i].apply(null, arguments);
+    let key = Array.prototype.shift(arguments),
+        fns = this.listenArray[key];
+
+    if (!fns || fns.length == 0) {
+        return false;
+    }
+
+    for (let i = 0; i < fns.length; i++) {
+        fns.apply(null, arguments);
     }
 }
 
