@@ -39,3 +39,13 @@ observer.listen('Peter', sayHello);
 
 // first parameter is key, second is name for sayHi and sayHello function
 observer.trigger('John', 'John');
+
+// installer
+function installer(obj) {
+    for (var key of Object.keys(observer)) {
+        obj[key] = observer[key];
+    }
+}
+
+let observer2 = {};
+installer(observer2);
