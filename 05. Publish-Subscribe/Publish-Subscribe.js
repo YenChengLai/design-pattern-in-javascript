@@ -50,16 +50,20 @@ function installer(obj) {
 let observer2 = {};
 installer(observer2);
 
-observer.remove = function (key, fn) {
+// unsubscribe function
+observer.unsubscribe = function (key, fn) {
     let fns = this.listenArray[key];
 
+    // return false if no function subscribed
     if (!fns) {
         return false;
     }
 
+    // if no specific function is assigned to unsubscribe, unsubscribe all
     if (!fn) {
         fns.length = 0;
     } else {
+        // find the specific passed in fn to unsubscribe
         for (let i = fns.length - 1; i >= 0; i--) {
             if (fns[i] == fn) {
                 fns.splice(i, 1);
