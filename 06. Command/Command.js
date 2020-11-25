@@ -6,12 +6,20 @@ window.onload = function () {
     // set command: register passed command as click event onto passed button
     const setCommand = function (button, command) {
         button.onclick = function () {
-            command();
+            command.execute();
         }
     }
 
-    // use case
-    setCommand(button1, function () { console.log('button 1 clicked'); });
-    setCommand(button2, function () { console.log('button 2 clicked'); });
-    setCommand(button3, function () { console.log('button 3 clicked'); });
+    // use case: each command is encapsulated into the command object
+    setCommand(button1, {
+        execute: function () { console.log('button 1 clicked'); }
+    });
+
+    setCommand(button2, {
+        execute: function () { console.log('button 2 clicked'); }
+    });
+
+    setCommand(button3, {
+        execute: function () { console.log('button 3 clicked'); }
+    });
 }
